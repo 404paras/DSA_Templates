@@ -1,0 +1,9 @@
+def depth-first_search(node):
+  if not node:return
+  
+  #write working of the solution
+  
+  for nei in graph[node]:
+    depth_first_search(nei)
+    
+  return  #write desired return answer
