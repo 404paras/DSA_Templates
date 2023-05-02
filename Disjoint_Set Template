@@ -1,0 +1,20 @@
+class DSU:
+    def __init__(self,n):
+        self.par = [i for i in range(n)]
+        self.rank = [0]*n
+    
+    def find(self,node):
+        if self.par[node]==node:
+            return node
+        self.par[node] = self.find(self.par[node])
+        return self.par[node]
+    def union(self,u,v):
+        u_p,v_p = self.find(u),self.find(v)
+        if u_p==v_p:return
+        if self.rank[u_p]>self.rank[v_p]:
+            self.par[v_p] = u_p
+        elif self.rank[u_p]<self.rank[v_p]:
+            self.par[u_p] = v_p
+        else:
+            self.par[u_p] = v_p
+            self.rank[u_p]+=1
